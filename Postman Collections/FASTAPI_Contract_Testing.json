@@ -27,7 +27,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "169d9b60-37b9-4618-bddc-c20158af6213",
+                "id": "fafbd045-963b-40bc-8b82-b1f2e358e177",
                 "type": "text/javascript",
                 "exec": [
                   "var warrantyContract = JSON.parse(pm.variables.get('warrantyContract'));",
@@ -47,7 +47,7 @@
                   "    pm.expect(pm.response.responseTime).to.be.below(2000);",
                   "});",
                   "",
-                  "//test"
+                  "//test1232"
                 ]
               }
             }
