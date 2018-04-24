@@ -27,7 +27,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "fafbd045-963b-40bc-8b82-b1f2e358e177",
+                "id": "c5d44990-1f5a-4209-965c-be601f38c3ff",
                 "type": "text/javascript",
                 "exec": [
                   "var warrantyContract = JSON.parse(pm.variables.get('warrantyContract'));",
@@ -45,9 +45,7 @@
                   "",
                   "pm.test(\"Response time is less than 2000ms\", function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(2000);",
-                  "});",
-                  "",
-                  "//test1232"
+                  "});"
                 ]
               }
             }
