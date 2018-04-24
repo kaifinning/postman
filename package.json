@@ -1,0 +1,22 @@
+{
+  "name": "fast-api",
+  "version": "1.0.0",
+  "description": "fast api testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaifinning/fast-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaifinning/fast-api/issues"
+  },
+  "homepage": "https://github.com/kaifinning/fast-api#readme",
+  "devDependencies": {
+    "newman": "^3.9.3"
+  }
+}
