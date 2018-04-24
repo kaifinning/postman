@@ -1,0 +1,885 @@
+{
+  "info": {
+    "_postman_id": "89277821-6f20-4449-8f1b-2e51bebabc9c",
+    "name": "FASTAPI_Contract_Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "65b17bab-56eb-40ca-8fd8-b9e943dfa779",
+      "name": "warrraty",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "b494a53f-6f78-448a-83c7-8cce3bf39cfa",
+          "name": "GetWarranty200",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "33bbfd3a-e8eb-40a6-84ed-7edb49c68630",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "13d9bdfe-65b2-4813-8f85-0242b19814bf",
+                "type": "text/javascript",
+                "exec": [
+                  "var warrantyContract = JSON.parse(pm.variables.get('warrantyContract'));",
+                  "var responseWarranty = JSON.parse(responseBody);",
+                  "",
+                  "console.log(\"response : \", responseWarranty);",
+                  "console.log(\"contract : \", warrantyContract);",
+                  "",
+                  "tests[\"Warranties are valid\"] = tv4.validate(responseWarranty, warrantyContract);",
+                  "console.log(\"Errors : \", tv4.error);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});",
+                  "",
+                  "",
+                  "//test123kai"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{{warantyContract}}"
+            },
+            "url": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/warranty"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f34cccd5-6516-4413-911a-3aefe726d2b0",
+          "name": "GetWarranty404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b7e47b16-05b8-4cf6-9a62-12658e97bfdd",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{baseUrl}}/api/v1/machineAssets/10101/{{serialNumber}}/warranty"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "517f6f9f-b7b0-47f4-87fd-311673c019c9",
+      "name": "Lastlocation",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "3a477789-21b8-4ab5-a016-482100d6d2b6",
+          "name": "GetLastLocation200",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "6d0479b4-ed7f-47b1-937f-5ca57812e6cf",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "4ab8881e-5d9c-4e11-9a61-e19f07f7009c",
+                "type": "text/javascript",
+                "exec": [
+                  "var lastLocationsContract = JSON.parse(pm.variables.get('lastLocationsContract'));",
+                  "var responseLastLocations = JSON.parse(responseBody);",
+                  "tests[\"Warranties are valid\"] = tv4.validate(responseLastLocations, lastLocationsContract);",
+                  "",
+                  "console.log(\"response : \", responseLastLocations);",
+                  "console.log(\"contract : \", lastLocationsContract);",
+                  "console.log(\"Validation errors : \", tv4.error);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{{warantyContract}}"
+            },
+            "url": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/lastLocations"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ae43d06d-a7f7-4743-8708-2c6c6d65a50a",
+          "name": "GetLastLocation404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "83c4851a-10f1-4498-85b8-974d16a2fa97",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/abcd/lastLocations"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "5697b75f-4189-432f-b452-13ce72f22259",
+      "name": "Operations",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "120cd2f7-ff7a-496e-a66e-a3dae0c727a6",
+          "name": "GetOperations200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9896dd91-c47c-4d21-8ebb-230966936402",
+                "type": "text/javascript",
+                "exec": [
+                  "var operationsContract = JSON.parse(pm.variables.get('operationsContract'));",
+                  "var responseOperations = JSON.parse(responseBody);",
+                  "tests[\"Warranties are valid\"] = tv4.validate(responseOperations, operationsContract);",
+                  "",
+                  "console.log(\"response : \", responseOperations);",
+                  "console.log(\"contract : \", operationsContract);",
+                  "console.log(\"Validation errors : \", tv4.error);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/operations?startdate={{startDate}}&enddate={{endDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "{{serialNumber}}",
+                "operations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{endDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f0909551-5e2d-4926-a51d-992357ef9d80",
+          "name": "GetOperations404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6abed5a6-9c84-46c9-962e-a619b2465a43",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/10101/{{serialNumber}}/operations?startdate={{startDate}}&enddate={{endDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "10101",
+                "{{serialNumber}}",
+                "operations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{endDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "09ad8f0e-ee87-433c-bdcb-b01c65c67901",
+          "name": "GetOperations400",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/operations?startdate={{endDate}}&enddate={{startDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "{{serialNumber}}",
+                "operations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{endDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{startDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3bdebf88-9518-4dca-abea-c19f7cb2df72",
+          "name": "GetOperations500",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "29666204-65a7-46c8-baac-e1d1fbfdf92f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 500\", function () {",
+                  "    pm.response.to.have.status(500);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/operations?startdate={{startDate}}&enddate=werwer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "{{serialNumber}}",
+                "operations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "werwer"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "ffcc5290-4594-4567-8c5c-2d39bf36e0b9",
+      "name": "Locations",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "5b44ce3d-f8b0-41ff-9c59-735e5e25820a",
+          "name": "GetLocations404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4622a345-b60e-4d5b-a990-eda92ec2e95a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/12345/locations?startdate={{startDate}}&enddate={{endDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "12345",
+                "locations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{endDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a6db2c5e-68e0-4258-969e-5919783b69ba",
+          "name": "GetLocations200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6dc0473a-2a6a-475d-aee6-eefe31fb47bc",
+                "type": "text/javascript",
+                "exec": [
+                  "var locationsContract = JSON.parse(pm.variables.get('locationsContract'));",
+                  "var responseLocations = JSON.parse(responseBody);",
+                  "tests[\"Warranties are valid\"] = tv4.validate(responseLocations, locationsContract);",
+                  "",
+                  "console.log(\"response : \", responseLocations);",
+                  "console.log(\"contract : \", locationsContract);",
+                  "console.log(\"Validation errors : \", tv4.error);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/locations?startdate={{startDate}}&enddate={{endDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "{{serialNumber}}",
+                "locations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{startDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{endDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "13099d11-4491-48bb-8aff-9ef632dd5d43",
+          "name": "GetLocations400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6b67e04f-3580-4ec2-ad74-c0c19a7d7d3c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 2000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/locations?startdate={{endDate}}&enddate={{startDate}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "machineAssets",
+                "{{customerID}}",
+                "{{serialNumber}}",
+                "locations"
+              ],
+              "query": [
+                {
+                  "key": "startdate",
+                  "value": "{{endDate}}"
+                },
+                {
+                  "key": "enddate",
+                  "value": "{{startDate}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "4e2b2c54-de8e-41cb-9625-519afe024f51",
+      "name": "Add a mock",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "255dfea5-679b-4d9f-ba0d-2e74db6ed4e3",
+          "name": "Get Collection ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d032c801-2c52-4fb1-940e-e3aded6bfbe7",
+                "type": "text/javascript",
+                "exec": [
+                  "var collectionsResponse = JSON.parse(responseBody);",
+                  "console.log(collectionsResponse);",
+                  "",
+                  "var result = collectionsResponse.collections[1].uid;",
+                  "console.log(result);",
+                  "",
+                  "pm.environment.set(\"collectionID\", result);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api-key}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "https://api.getpostman.com/collections"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "50100b80-8696-42a9-b96a-fab6a66cf06e",
+          "name": "Get Environment ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "69cec0a9-89da-4545-9795-2f127a541b84",
+                "type": "text/javascript",
+                "exec": [
+                  "var environmentsResponse = JSON.parse(responseBody);",
+                  "console.log(environmentsResponse);",
+                  "",
+                  "var result = environmentsResponse.environments[1].uid;",
+                  "console.log(result);",
+                  "",
+                  "pm.environment.set(\"environmentID\", result);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api-key}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "https://api.getpostman.com/environments"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "be56d331-3187-4365-842c-cf36033b1d42",
+          "name": "Create Mock",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api-key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"mock\": {\r\n\t\t\"collection\": \"{{collectionID}}\",\r\n\t\t\"environment\": \"{{environmentID}}\"\r\n\t}\r\n}"
+            },
+            "url": "https://api.getpostman.com/mocks"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7586b824-6548-43cc-b28b-96c9b7d7193a",
+          "name": "Retrieve MockID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b7cf9622-ccaf-4f9d-a4d0-77e291551025",
+                "type": "text/javascript",
+                "exec": [
+                  "var mockResponse = JSON.parse(responseBody);",
+                  "console.log(mockResponse);",
+                  "",
+                  "var result = mockResponse.mocks[3].mockUrl;",
+                  "console.log(result);",
+                  "",
+                  "pm.environment.set(\"MockUrl\", result);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api-key}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "https://api.getpostman.com/mocks"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "66448911-1500-4390-9c20-d28aa50557aa",
+          "name": "Create Mock Environment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api-key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"environment\": {\r\n        \"name\": \"FAST_Mock\",\r\n        \"values\": [\r\n            {\"key\": \"baseUrl\", \"value\": \"{{MockUrl}}\"},\r\n            {\"key\": \"customerID\", \"value\": \"{{customerID}}\"},\r\n            {\"key\": \"serialNumber\", \"value\": \"{{serialNumber}}\"},\r\n            {\"key\": \"startDate\", \"value\": \"{{startDate}}\"},\r\n            {\"key\": \"endDate\", \"value\": \"{{endDate}}\"}\r\n        ]\r\n    }\r\n}"
+            },
+            "url": "https://api.getpostman.com/environments"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "a7e0f45f-a001-4f09-bae1-a868505bafec",
+      "name": "TestingLoop",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "3fb9e853-f182-4170-b6c0-d7fb5d71887a",
+            "type": "text/javascript",
+            "exec": [
+              "//testData = ['May20', 'May20th', '05-20-2018', '2018-05-20']",
+              "//var testData = JSON.parse(pm.environment.get(\"testData\"));",
+              "var testData1 = pm.variables.get(\"testData\");",
+              "console.log(testData1);",
+              "//pm.environment.unset(\"endDate\");",
+              "",
+              "for(var i=0; i<=testData1.length; i++){",
+              "    //pm.environment.unset(\"endDate\");",
+              "    pm.environment.set(\"endDate\", testData1[i]);",
+              "    console.log(testData1[i]);",
+              "    postman.setNextRequest(\"TestingLoop\");",
+              "    console.log(request.url);",
+              "    pm.test(\"Status code is 200\", function () {",
+              "        pm.response.to.have.status(200);",
+              "    });",
+              "    testData1.splice(testData1[i], 1);",
+              "    pm.environment.unset(\"endDate\");",
+              "    console.log(testData1);",
+              "}",
+              "//;",
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "9bef5b8d-3193-47f8-864d-814caa52a50b",
+            "type": "text/javascript",
+            "exec": [
+              "var testData = JSON.parse(pm.environment.get(\"testData\"));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/machineAssets/{{customerID}}/{{serialNumber}}/locations?startdate={{startDate}}&enddate={{endDate}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "machineAssets",
+            "{{customerID}}",
+            "{{serialNumber}}",
+            "locations"
+          ],
+          "query": [
+            {
+              "key": "startdate",
+              "value": "{{startDate}}"
+            },
+            {
+              "key": "enddate",
+              "value": "{{endDate}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "a847cf11-7c41-40c4-9a73-75beb9586c95",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "19a4b0bf-1acf-4e2c-ace8-3d102f79ad39",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "a806a8e6-0e90-49d8-b3eb-3f5a84d5e723",
+      "key": "warrantyContract",
+      "value": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"warranties\": {\n      \"type\": \"array\",\n      \"items\": [\n            {\n              \"type\": \"object\",\n              \"properties\": {\n                \"serialNumber\": {\n                  \"type\": \"string\"\n                },\n                \"warrantyType\": {\n                  \"type\": \"string\"\n                },\n                \"description\": {\n                  \"type\": \"string\"\n                },\n                \"division\": {\n                  \"type\": \"string\"\n                },\n                \"manufacturerCode\": {\n                  \"type\": \"string\"\n                },\n                \"yearOfManufacture\": {\n                  \"type\": \"string\"\n                },\n                \"model\": {\n                  \"type\": \"string\"\n                },\n                \"startDate\": {\n                  \"type\": \"string\"\n                },\n                \"endDate\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n                \"serialNumber\",\n                \"warrantyType\",\n                \"description\",\n                \"division\",\n                \"manufacturerCode\",\n                \"yearOfManufacture\",\n                \"model\",\n                \"startDate\",\n                \"endDate\"\n              ]\n            }\n        ]\n    }\n  }\n}",
+      "type": "string"
+    },
+    {
+      "id": "f1cb2369-14a8-4f74-a97c-8658ab890b6f",
+      "key": "operationsContract",
+      "value": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"operations\": {\n      \"type\": \"array\",\n      \"items\": [\n            {\n              \"type\": \"object\",\n              \"properties\": {\n                \"serialNumber\": {\n                  \"type\": \"string\"\n                },\n                \"calendarDayAssetLocalTime\": {\n                  \"type\": \"string\"\n                },\n                \"startUtcTime\": {\n                  \"type\": \"string\"\n                },\n                \"assetId\": {\n                  \"type\": \"string\"\n                },\n                \"startStateLocalAssetTime\": {\n                  \"type\": \"string\"\n                },\n                \"startStateAssetTimeZone\": {\n                  \"type\": [\"string\", \"null\"]\n                },\n                \"startLocationLatitude\": {\n                  \"type\": \"string\"\n                },\n                \"startLocationLongitude\": {\n                  \"type\": \"string\"\n                },\n                \"endStateUtc\": {\n                  \"type\": \"string\"\n                },\n                \"endStateLocalAssetTime\": {\n                  \"type\": \"string\"\n                },\n                \"endStateAssetTimeZone\": {\n                  \"type\": [\"string\", \"null\"]\n                },\n                \"endLocationLatitude\": {\n                  \"type\": \"string\"\n                },\n                \"endLocationLongitude\": {\n                  \"type\": \"string\"\n                },\n                \"durationSeconds\": {\n                  \"type\": \"integer\"\n                },\n                \"workDefinition\": {\n                  \"type\": \"string\"\n                },\n                \"workingState\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n               \"serialNumber\",\n                \"calendarDayAssetLocalTime\",\n                \"startUtcTime\",\n                \"assetId\",\n                \"startStateLocalAssetTime\",\n                \"startStateAssetTimeZone\",\n                \"startLocationLatitude\",\n                \"startLocationLongitude\",\n                \"endStateUtc\",\n                \"endStateLocalAssetTime\",\n                \"endStateAssetTimeZone\",\n                \"endLocationLatitude\",\n                \"endLocationLongitude\",\n                \"durationSeconds\",\n                \"workDefinition\",\n                \"workingState\"\n              ]\n            }\n        ]\n    }\n  }\n}",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "b56b8039-5f12-4649-bbe2-83c8c72d2df6",
+      "key": "locationsContract",
+      "value": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"locations\": {\n      \"type\": \"array\",\n      \"items\": [\n            {\n              \"type\": \"object\",\n              \"properties\": {\n                \"serialNumber\": {\n                  \"type\": \"string\"\n                },\n                \"moduleTimeUTC\": {\n                  \"type\": \"string\"\n                },\n                \"latitude\": {\n                  \"type\": \"number\"\n                },\n                \"longitude\": {\n                  \"type\": \"number\"\n                },\n                \"receivedTimeUTC\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n               \"serialNumber\",\n                \"moduleTimeUTC\",\n                \"latitude\",\n                \"longitude\",\n                \"receivedTimeUTC\"\n              ]\n            }\n        ]\n    }\n  }\n}",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "id": "a05b974d-5f05-4852-bce8-76a9ec5465dc",
+      "key": "lastLocationsContract",
+      "value": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"locations\": {\n      \"type\": \"array\",\n      \"items\": [\n            {\n              \"type\": \"object\",\n              \"properties\": {\n                \"serialNumber\": {\n                  \"type\": \"string\"\n                },\n                \"moduleTimeUTC\": {\n                  \"type\": \"string\"\n                },\n                \"latitude\": {\n                  \"type\": \"number\"\n                },\n                \"longitude\": {\n                  \"type\": \"number\"\n                },\n                \"receivedTimeUTC\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n               \"serialNumber\",\n                \"moduleTimeUTC\",\n                \"latitude\",\n                \"longitude\",\n                \"receivedTimeUTC\"\n              ]\n            }\n        ]\n    }\n  }\n}",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}
